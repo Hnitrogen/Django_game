@@ -10,7 +10,9 @@ class AcGameMenu
         
         this.root.$ac_game.append(this.$menu);
     }
-}class AcGame {
+}
+
+class AcGame {
 	constructor(id) {
 		//console.log("create AcGame");
 		this.id = id ;
