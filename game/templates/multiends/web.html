@@ -1,0 +1,24 @@
+{% load static %}
+
+<head>
+    <!--引入jquery css | js-->
+    <link rel="stylesheet" href="https://cdn.acwing.com/static/jquery-ui-dist/jquery-ui.min.css">
+    <script src="https://cdn.acwing.com/static/jquery/js/jquery-3.3.1.min.js"></script>
+
+    <!--引入自己的css js         django提供快速查找的方法  但是要load static这个关键字(line 1)    -->
+    <link rel="stylesheet" href="{% static 'css/game.css' %}" > 
+    <script src="{% static 'js/dist/game.js' %}"></script>
+</head>
+
+<body style="margin: 0">
+    <div id="acgame123"></div>
+    <script>
+        $(document).ready(function()
+        {
+            let ac_game = AcGame();
+        });
+    </script>
+    <!--这是用js渲染前端,开了个API去调用-->
+</body>
+
+
