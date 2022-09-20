@@ -9,11 +9,11 @@ class AcGameMenu
                     <div class="ac-game-menu-field-item ac-game-menu-field-item-single">
                         单人模式
                     </div>
-                    
+                    <br>
                     <div class="ac-game-menu-field-item ac-game-menu-field-item-muti">
                         多人模式
                     </div>
-                    
+                    <br>
                     <div class="ac-game-menu-field-item ac-game-menu-field-item-settings">
                         设置
                     </div>
