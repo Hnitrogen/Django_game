@@ -27,6 +27,7 @@ class AcGameMenu
         this.$single = this.$menu.find('.ac-game-menu-item-single');    //用find函数找到对应class 对应的 div
         this.$muti = this.$menu.find('.ac-game-menu-item-field-muti');
         this.$settings = this.$menu.find('.ac-game-menu-item-field-settings');
-
     }
+
+    
 }

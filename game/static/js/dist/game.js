@@ -13,7 +13,7 @@ class AcGameMenu
                     <div class="ac-game-menu-field-item ac-game-menu-field-item-muti">
                         多人模式
                     </div>
-                    <br>
+                    <br> 
                     <div class="ac-game-menu-field-item ac-game-menu-field-item-settings">
                         设置
                     </div>

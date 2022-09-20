@@ -3,23 +3,36 @@
 	height: 100%;
 	background-image: url("/static/image/menu/menu.png");
 	background-size: 100% 100%;
+	/* 让用户无法选中页面中的文本 */
+	user-select: none;
 }	
 
 
 .ac-game-menu-field {
 	width: 20vw;   /* vh vw是百分比,这样菜单会根据显示器的分辨率自适应*/
+	
+	/* 这是相对位置, 用top和left可以设置相应偏移量 */
 	position: relative;
-	top: 40vh;
-	left: 19vw;
+	top: 26vh;		
+	left: 19vw;		
 }
 
 .ac-game-menu-field-item {
 	color: white;
-	height: 7vh;
+	height: -9vh;
 	width: 18vw;
 	font-size: 6vh;
 	font-style: italic;
 	padding: 2vh;	/*这些东西的参数可以在浏览器f12工具调试*/
 	text-align: center;
 	background-color: rgba(39,21,28,0.6) ;
+	border-radius: 15px;	/*圆角*/
+	letter-spacing: 0.5vw;  /* 字间距 */
+	cursor: pointer;     	/* 鼠标变成小手的形状 */
+}
+
+/* 鼠标悬停让按钮变大(变大程度 | 变大时间) */
+.ac-game-menu-field-item:hover	{
+	transform: scale(1.2);
+	transition: 100ms;
 }
