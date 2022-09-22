@@ -7,13 +7,14 @@
 
     <!--引入自己的css js         django提供快速查找的方法  但是要load static这个关键字(line 1)    -->
     <link rel="stylesheet" href="{% static 'css/game.css' %}" > 
-    <script src="{% static 'js/dist/game.js' %}"></script>
+    
 </head>
 
 <body style="margin: 0">
     <div id="acgame123"></div>
     
-    <script>
+    <script type="module">
+        import {AcGame} from "{% static 'js/dist/game.js' %}"; //调js包而不是链接js代码
         $(document).ready(function()
         {
             let ac_game = new AcGame("acgame123");

@@ -1,5 +1,5 @@
 // 总的JS
-class AcGame {
+export class AcGame {	//调包导入js
 	constructor(id) {
 		//console.log("create AcGame");
 		this.id = id ;

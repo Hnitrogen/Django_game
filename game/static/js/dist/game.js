@@ -87,7 +87,7 @@ class AcGameMenu
         this.$playground.hide();
     }
 } // 总的JS
-class AcGame {
+export class AcGame {
 	constructor(id) {
 		//console.log("create AcGame");
 		this.id = id ;
