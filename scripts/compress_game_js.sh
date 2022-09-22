@@ -3,7 +3,7 @@
 # 这是一个打包的shell脚本
 # 他将 src里面的js代码打包放到dist里面去
 
-JS_PATH=/home/pink/acapp/game/static/js/    # 声明宏
+JS_PATH=/home/pink/django_webapp/game/static/js/    # 声明宏
 JS_PATH_DIST=${JS_PATH}dist/
 JS_PATH_SRC=${JS_PATH}src/ 
 
