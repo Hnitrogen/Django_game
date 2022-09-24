@@ -15,7 +15,12 @@ class GameMap extends  AcGameObject  {
     }
 
     update() {
+        this.render();
     }
 
-    
+    render()  {
+        this.ctx.fillStyle = "rgba(0,0,0,0.2)";
+        this.ctx.fillRect(0,0,this.ctx.canvas.width,this.ctx.canvas.height);    //渲染地图(黑色)
+    }
+     
 }
