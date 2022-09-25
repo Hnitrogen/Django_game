@@ -11,8 +11,9 @@ class FireBall extends AcGameObject {
         this.radius = radius;
         this.color = color;
         this.speed = speed;
-        this.move_length = move_length ;
-         this.eps = 0.1; 
+        this.move_length = move_length ;    //射程
+        this.eps = 0.1; 
+        
     }
 
     start() { 
@@ -20,21 +21,29 @@ class FireBall extends AcGameObject {
 
     update() {
         if(this.move_length < this.eps)   {
-            this.move_length = 0 ;
-            this.vx = this.vy = 0 ;
-        }   else {
-            let moved = Math.min(this.move_length,this.speed*this.timedelta / 1000) ; 
-            this.x += this.vx * moved ;
-            this.y += this.yv * moved ;     //方向 x 距离
-        }
+            this.destroy();
+            return false;
+        }             
+        //在射程 和 路程 取 min 
+        let moved = Math.min(this.move_length, this.speed*this.timedelta / 1000);
+        this.x += this.vx * moved;
+        this.y += this.vy * moved;
+        this.move_length -= moved;
         this.render();
+
+        // this.render();   //调试渲染是否成功
+
     }
 
     //还是画圆
     render() {
+        console.log("render a fireball");
+        //console.log(this.move_length);
         this.ctx.beginPath();
         this.ctx.arc(this.x,this.y,this.radius,0,Math.PI*2,false);
         this.ctx.fillStyle = this.color;
         this.ctx.fill() ;
+
+        
     }
 }

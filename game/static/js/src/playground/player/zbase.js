@@ -1,7 +1,7 @@
 class Player extends AcGameObject   {
     constructor(playground,x,y,radius,color,speed,is_me)   {
         super();
-        this.playground = playground;
+        this.playground = playground;   //存下了构造函数里面的界面
         this.ctx = this.playground.game_map.ctx;
         this.x = x ;
         this.y = y ;
@@ -37,6 +37,7 @@ class Player extends AcGameObject   {
                 if(outer.cur_skill === "fireball")  {   //火球
                     outer.shoot_fireball(e.clientX , e.clientY);
                 }
+                outer.cur_skill = null ;    //释放技能槽位
             }
         });
 
@@ -47,8 +48,17 @@ class Player extends AcGameObject   {
         });
     } 
 
-    shoot_fireball(tx,ty)   {
-        console.log("shoot fireball",tx,ty);
+    shoot_fireball(tx,ty)   {   // 传入的是目的坐标
+        console.log("shoot fireball",tx,ty); //构造player传入了playground
+        let x = this.x , y = this.y ;
+        let radius = this.playground.height*0.01;
+        let angle = Math.atan2(ty-this.y,tx-this.x);    //this是player这个类
+        let vx = Math.cos(angle) , vy = Math.sin(angle);
+        let color = "pink";   
+        let speed = this.playground.height*0.5;
+        let move_length = this.playground.height*1.5;   //子弹射程
+        
+        new FireBall(this.playground,this,x,y,radius,vx,vy,color,speed,move_length);
     }
     
     get_dist(x1,y1,x2,y2)  {
