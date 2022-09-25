@@ -14,6 +14,8 @@ class Player extends AcGameObject   {
         this.speed =speed ;
         this.is_me = is_me ;
         this.eps = 0.1;
+
+        this.cur_skill = null ;
     }
 
     start() {
@@ -31,8 +33,23 @@ class Player extends AcGameObject   {
         this.playground.game_map.$canvas.mousedown(function(e)  {
             if(e.which === 3)   //1 左键 2 滚轮 3 右键
                 outer.move_to(e.clientX, e.clientY);
+            else if(e.which === 1)  {
+                if(outer.cur_skill === "fireball")  {   //火球
+                    outer.shoot_fireball(e.clientX , e.clientY);
+                }
+            }
+        });
+
+        $(window).keydown(function(e)  {    //keycode
+            if(e.which === 81)  //q被按下
+                outer.cur_skill = "fireball";
+            return false;
         });
     } 
+
+    shoot_fireball(tx,ty)   {
+        console.log("shoot fireball",tx,ty);
+    }
     
     get_dist(x1,y1,x2,y2)  {
         let dx = x1 - x2 ;

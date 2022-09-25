@@ -154,6 +154,8 @@ requestAnimationFrame(AC_GAME_ANIMATION);class GameMap extends  AcGameObject  {
         this.speed =speed ;
         this.is_me = is_me ;
         this.eps = 0.1;
+
+        this.cur_skill = null ;
     }
 
     start() {
@@ -171,8 +173,23 @@ requestAnimationFrame(AC_GAME_ANIMATION);class GameMap extends  AcGameObject  {
         this.playground.game_map.$canvas.mousedown(function(e)  {
             if(e.which === 3)   //1 左键 2 滚轮 3 右键
                 outer.move_to(e.clientX, e.clientY);
+            else if(e.which === 1)  {
+                if(outer.cur_skill === "fireball")  {   //火球
+                    outer.shoot_fireball(e.clientX , e.clientY);
+                }
+            }
+        });
+
+        $(window).keydown(function(e)  {    //keycode
+            if(e.which === 81)  //q被按下
+                outer.cur_skill = "fireball";
+            return false;
         });
     } 
+
+    shoot_fireball(tx,ty)   {
+        console.log("shoot fireball",tx,ty);
+    }
     
     get_dist(x1,y1,x2,y2)  {
         let dx = x1 - x2 ;
@@ -207,6 +224,45 @@ requestAnimationFrame(AC_GAME_ANIMATION);class GameMap extends  AcGameObject  {
         this.ctx.arc(this.x,this.y,this.radius,0,Math.PI*2,false);          
         this.ctx.fillStyle = this.color;
         this.ctx.fill();
+    }
+}class FireBall extends AcGameObject {
+    constructor(playground,player,x,y,radius,vx,vy,color,speed,move_length)  {
+        super();
+        this.playground = playground ;
+        this.player = player ;
+        this.ctx = this.playground.game_map.ctx;
+        this.x = x ;
+        this.y = y ;
+        this.vx = vx;
+        this.vy = vy;
+        this.radius = radius;
+        this.color = color;
+        this.speed = speed;
+        this.move_length = move_length ;
+         this.eps = 0.1; 
+    }
+
+    start() { 
+    }
+
+    update() {
+        if(this.move_length < this.eps)   {
+            this.move_length = 0 ;
+            this.vx = this.vy = 0 ;
+        }   else {
+            let moved = Math.min(this.move_length,this.speed*this.timedelta / 1000) ; 
+            this.x += this.vx * moved ;
+            this.y += this.yv * moved ;     //方向 x 距离
+        }
+        this.render();
+    }
+
+    //还是画圆
+    render() {
+        this.ctx.beginPath();
+        this.ctx.arc(this.x,this.y,this.radius,0,Math.PI*2,false);
+        this.ctx.fillStyle = this.color;
+        this.ctx.fill() ;
     }
 }class AcGamePlayground  {
     constructor(root)   {
