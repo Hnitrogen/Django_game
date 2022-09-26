@@ -9,3 +9,4 @@ JS_PATH_SRC=${JS_PATH}src/
 
 find $JS_PATH_SRC -type f -name '*.js' | sort | xargs cat > ${JS_PATH_DIST}game.js
 # 在src下找到js文件,并按照字典序输出到dist的game.js文件
+echo yes | python3 manage.py collectstatic
