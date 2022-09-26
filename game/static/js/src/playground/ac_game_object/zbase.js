@@ -1,4 +1,4 @@
-let AC_GAME_OBJECTS = [];
+let AC_GAME_OBJECTS = [];      //存对象的
 
 class AcGameObject  {
     constructor() {
