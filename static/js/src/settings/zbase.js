@@ -29,7 +29,9 @@ class Settings	{
 			success: function(resp)	{	// 回调函数
 				console.log(resp);
 				if(resp.result === "success")	{
- 					outer.hide() ; 
+ 					outer.username = resp.username ;
+					outer.photo = resp.photo ;		// 存用户名和头像
+					outer.hide() ; 
 					outer.root.menu.show() ; 
 				}	else {
 					outer.login() ; 

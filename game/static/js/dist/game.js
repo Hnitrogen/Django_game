@@ -202,6 +202,12 @@ requestAnimationFrame(AC_GAME_ANIMATION);class GameMap extends  AcGameObject  {
         this.spent_time = 0 ;   //无敌时间
         this.friction = 0.9 ; //碰撞后的反速度衰减(摩擦力)
         this.cur_skill = null ;
+
+        if(this.is_me)  {
+            console.log("is_me!") ; 
+            this.img = new Image() ; 
+            this.img.src = this.playground.root.settings.photo ;
+        }
     }
 
     start() {
@@ -328,11 +334,25 @@ requestAnimationFrame(AC_GAME_ANIMATION);class GameMap extends  AcGameObject  {
     }
 
     render()  {
-        this.ctx.beginPath();
-        //画圆
-        this.ctx.arc(this.x,this.y,this.radius,0,Math.PI*2,false);          
-        this.ctx.fillStyle = this.color;
-        this.ctx.fill();
+        if(this.is_me)      // 画用户头像
+        {
+            this.ctx.save();
+            this.ctx.beginPath();
+            this.ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false);
+            this.ctx.stroke();
+            this.ctx.clip();
+            this.ctx.drawImage(this.img, this.x - this.radius, this.y - this.radius, this.radius * 2, this.radius * 2); 
+            this.ctx.restore();
+        }   
+        else
+        {
+            this.ctx.beginPath();
+            //画圆
+            this.ctx.arc(this.x,this.y,this.radius,0,Math.PI*2,false);          
+            this.ctx.fillStyle = this.color;
+            this.ctx.fill();
+        }
+
     }
 }class FireBall extends AcGameObject {
     constructor(playground,player,x,y,radius,vx,vy,color,speed,move_length,damage)  {
@@ -486,7 +506,9 @@ requestAnimationFrame(AC_GAME_ANIMATION);class GameMap extends  AcGameObject  {
 			success: function(resp)	{	// 回调函数
 				console.log(resp);
 				if(resp.result === "success")	{
- 					outer.hide() ; 
+ 					outer.username = resp.username ;
+					outer.photo = resp.photo ;		// 存用户名和头像
+					outer.hide() ; 
 					outer.root.menu.show() ; 
 				}	else {
 					outer.login() ; 
