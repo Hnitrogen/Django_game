@@ -22,6 +22,7 @@ class AcGameMenu
             </div>
         `);
         
+        this.$menu.hide();        // 先关闭menu
         this.root.$ac_game.append(this.$menu);
 
         //class 加. id是加 #
@@ -220,7 +221,7 @@ requestAnimationFrame(AC_GAME_ANIMATION);class GameMap extends  AcGameObject  {
             return false ;
         });
         this.playground.game_map.$canvas.mousedown(function(e)  {
-            const rect = outer.ctx.canvas.getBoundingClientRect();  //获取相对位置
+            const rect = outer.ctx.canvas.getBoundingClientRect();  //获取相对位置 --- 适配视窗 --> getBoundingClientReat 
             if(e.which === 3)   //1 左键 2 滚轮 3 右键
                 outer.move_to(e.clientX - rect.left, e.clientY - rect.top);
             else if(e.which === 1)  {
@@ -454,15 +455,65 @@ requestAnimationFrame(AC_GAME_ANIMATION);class GameMap extends  AcGameObject  {
     hide() {    // 关闭playground界面
         this.$playground.hide();
     }
-} // 总的JS
+} class Settings	{
+	constructor(root)	{
+		this.root = root ;
+		this.platform = "WEB" ;
+		if(this.root.AcWingOS)	this.platform = "ACAPP" ; 
+
+		this.start() ; 
+	}
+
+	start() {
+		this.getinfo() ; 
+	}
+
+	register() {	// 打开注册界面
+	}
+
+	login() {	// 打开登录界面
+	}
+	
+	getinfo() {		// 获取服务器信息
+		let outer = this ; 
+		
+		$.ajax({
+			url: "https://app3500.acapp.acwing.com.cn/settings/getinfo/",	 // 传入一个字典
+			type: "GET",
+			data: {
+				platform: outer.platform ,
+			},
+			success: function(resp)	{	// 回调函数
+				if(resp.result === "success")	{
+					outer.hide() ; 
+					outer.root.menu.show() ; 
+				}	else {
+					outer.login() ; 
+				}
+			}
+		});
+	}
+
+	hide() {
+
+	}
+
+	show() {
+
+	}
+}
+// 总的JS
 export class AcGame {	//调包导入js
-	constructor(id) {
+	constructor(id, AcWingOS) {			// 第二个参适配 第二种前端(传的是api)
 		//console.log("create AcGame");
-		this.id = id ;
+		this.id = id;
 		this.$ac_game = $('#' + id);	//找到id为传入id 的 <div> ，用 ac_game 存起来 
+		this.AcWingOs = AcWingOS;
+
+		this.settings = new Settings(this); 
 		this.menu = new AcGameMenu(this);
 		this.playground = new AcGamePlayground(this);
-		
+
 		this.start();
 	}
 

@@ -17,6 +17,7 @@ from django.contrib import admin
 from django.urls import path , include 
 
 urlpatterns = [
-    path('',include('game.urls.index')),  #调用index函数层层穿透最后返回 web.html(字符串)
     path('admin/', admin.site.urls),
+    path('',include('game.urls.index')),  #调用index函数层层穿透最后返回 web.html(字符串)
+
 ]

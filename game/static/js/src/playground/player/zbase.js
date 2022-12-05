@@ -40,7 +40,7 @@ class Player extends AcGameObject   {
             return false ;
         });
         this.playground.game_map.$canvas.mousedown(function(e)  {
-            const rect = outer.ctx.canvas.getBoundingClientRect();  //获取相对位置
+            const rect = outer.ctx.canvas.getBoundingClientRect();  //获取相对位置 --- 适配视窗 --> getBoundingClientReat 
             if(e.which === 3)   //1 左键 2 滚轮 3 右键
                 outer.move_to(e.clientX - rect.left, e.clientY - rect.top);
             else if(e.which === 1)  {

@@ -22,6 +22,7 @@ class AcGameMenu
             </div>
         `);
         
+        this.$menu.hide();        // 先关闭menu
         this.root.$ac_game.append(this.$menu);
 
         //class 加. id是加 #

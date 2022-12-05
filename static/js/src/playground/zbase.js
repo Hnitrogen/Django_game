@@ -2,8 +2,8 @@ class AcGamePlayground  {
     constructor(root)   {
         this.root = root;
         this.$playground = $(`<div class="ac-game-playground"></div>`)
+        
         this.hide();
-
         this.start();
     }
 
