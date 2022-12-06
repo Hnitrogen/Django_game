@@ -487,8 +487,34 @@ requestAnimationFrame(AC_GAME_ANIMATION);class GameMap extends  AcGameObject  {
 		this.$settings = $(`		
 		<div class="ac-game-settings">
 			<div class="ac-game-settings-login">
+				<div class="ac-game-settings-title">
+					登录
+				</div>
+				<div class="ac-game-settings-username">
+					<div class="ac-game-settings-item">
+						<input type="text" placeholder="用户名">
+					</div> 
+				</div>
+				<div class="ac-game-settings-password">
+					<div class="ac-game-settings-item">	
+						<input type="password" placeholder="密码">
+					</div>
+				</div>
+				<div class="ac-game-settings-submit">
+					<div class="ac-game-settings-item">
+						<button>登录</button>
+					</div>
+				</div>
+				<div class="ac-game-settings-error-message">
+					用户名或密码错误
+				</div>
+				<div class="ac-game-settings-option">
+					注册
+				</div>
 			</div>	
+			
 			<div class="ac-game-settings-register">
+
 			</div> 
 		</div>
 		`);								// 查div --- 存一下子div 
