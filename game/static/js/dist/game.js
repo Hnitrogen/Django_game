@@ -511,8 +511,14 @@ requestAnimationFrame(AC_GAME_ANIMATION);class GameMap extends  AcGameObject  {
 				<div class="ac-game-settings-option">
 					注册
 				</div>
+				<br>       
+				<div class="ac-game-settings-acwing">
+					<img width="30" src="https://cdn.acwing.com/media/article/image/2021/11/18/1_ea3d5e7448-logo64x64_2.png">
+					<div>
+						Acwing一键登录
+					</div>
+				</div>
 			</div>	
-			
 			<div class="ac-game-settings-register">
 
 			</div> 

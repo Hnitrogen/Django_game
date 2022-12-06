@@ -41,7 +41,7 @@
 	color: white;
 	font-size: 3vh;
 	text-align: center;
-	height: 7vh;
+	height: 5vh;
 	padding-top: 2vh;
 	margin-bottom: 2vh;
 }
@@ -61,11 +61,31 @@
 	height: 7vh;
 }
 
+.ac-game-settings-acwing {
+	display: block;
+	height: 7vh;
+}
+
 .ac-game-settings-item {
 	width: 100%;
 	height: 100%;
 }
 
+.ac-game-settings-acwing > img{
+	display: block;
+	position: relative;					/*从这往下4行   居中*/
+	top:  25%;							
+	left: 50%;		
+	transform: translate(-50%,-50%);
+	cursor: pointer;
+}
+
+.ac-game-settings-acwing > div {
+	display: block;
+	color: white;
+	font-size: 1.3vh;
+	text-align: center;
+}
 .ac-game-settings-item > input {
 	width: 90%;
 	line-height: 3vh;
@@ -89,7 +109,7 @@
 
 .ac-game-settings-error-message {
 	color: red;
-	font-size: 1.8vh;
+	font-size: 1.3vh;
 	display: inline;
 	float: left; 
 	padding-left: 1vw;
@@ -100,7 +120,7 @@
 	font-size: 2.4vh;
 	display: inline;
 	float: right; 
-	padding-left: 2vw;
+	padding-right: 1.5vw;
 	cursor: pointer;		/* 鼠标变小手喵*/
 }
 
