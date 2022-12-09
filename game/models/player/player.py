@@ -6,7 +6,7 @@ from django.contrib.auth.models import User
 class Player(models.Model) :
     user = models.OneToOneField(User,on_delete=models.CASCADE)      # 和数据库的user 11对应
     photo = models.URLField(max_length=256 , blank=True)        # 获取用户头像
-
+    openid = models.CharField(default="",max_length=50,blank=True,null=True)    # openid
     def __str__(self) :
         return  str(self.user)      # 后台显示用户id
 

@@ -1,7 +1,7 @@
 from django.http import JsonResponse 
 from django.contrib.auth import authenticate , login 
 
-def signin(request) : 
+def signin(request) :       # 判断登陆合法
     data = request.GET 
     username = data.get('username') 
     password = data.get('password')

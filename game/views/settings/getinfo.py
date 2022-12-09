@@ -16,7 +16,7 @@ def getinfo_web(request) :
             'result' : "未登录" 
         })
     else:
-        player = Player.objects.all()[0] 
+        player = Player.objects.get(user=user)      # 获取等于user(db的)的user(requset的) 
         return JsonResponse({
             'result' : "success" , 
             'username' : player.user.username ,
